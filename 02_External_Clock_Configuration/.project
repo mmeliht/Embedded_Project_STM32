@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>02_External_Clock_Configuration</name>
+	<comment></comment>
+	<projects>
+		<project>01_Internal_Clock_Configuration</project>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+		<nature>com.st.stm32cube.ide.mcu.MCUProjectNature</nature>
+		<nature>com.st.stm32cube.ide.mcu.MCUCubeProjectNature</nature>
+	</natures>
+</projectDescription>
