@@ -60,8 +60,8 @@ all: main-build
 main-build: 05_GPIO_Button_Status_Led_Blink.elf secondary-outputs
 
 # Tool invocations
-05_GPIO_Button_Status_Led_Blink.elf 05_GPIO_Button_Status_Led_Blink.map: $(OBJS) $(USER_OBJS) C:\Users\USER\STM32CubeIDE\workspace_1.18.0\05_GPIO_Button_Status_Led_Blink\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "05_GPIO_Button_Status_Led_Blink.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\USER\STM32CubeIDE\workspace_1.18.0\05_GPIO_Button_Status_Led_Blink\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="05_GPIO_Button_Status_Led_Blink.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+05_GPIO_Button_Status_Led_Blink.elf 05_GPIO_Button_Status_Led_Blink.map: $(OBJS) $(USER_OBJS) C:\Users\USER\Desktop\Embedded_Project_STM32\05_GPIO_Button_Status_Led_Blink\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "05_GPIO_Button_Status_Led_Blink.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\USER\Desktop\Embedded_Project_STM32\05_GPIO_Button_Status_Led_Blink\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="05_GPIO_Button_Status_Led_Blink.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
