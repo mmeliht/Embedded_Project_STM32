@@ -1,0 +1,1 @@
+Butona basıldığında interupt oluşturarak 12 ve 15. gpio pinlerine toggle işlemi gerçekleştirir. 
