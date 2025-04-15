@@ -1,6 +1,33 @@
-# Eclipse
-.metadata
-.settings
-[Rr]elease
-[Dd]ebug
-.launch
+# IDE klasörleri
+.metadata/
+.settings/
+*.launch
+
+# Build klasörleri - tüm alt dizinler dahil
+**/Debug/
+**/debug/
+**/Release/
+**/release/
+
+# Derleme çıktıları
+**/*.o
+**/*.d
+**/*.elf
+**/*.bin
+**/*.hex
+**/*.map
+**/*.lst
+**/*.axf
+
+# STM32CubeMX proje dosyası
+**/*.ioc
+
+# Geçici dosyalar
+*.log
+*.tmp
+*.bak
+*.swp
+
+# MacOS / Windows özel dosyalar
+.DS_Store
+Thumbs.db
