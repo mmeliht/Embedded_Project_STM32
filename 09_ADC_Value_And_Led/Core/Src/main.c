@@ -57,6 +57,24 @@ static void MX_ADC2_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+uint32_t Read_ADC_Value(){
+
+	uint32_t adcValue = 0;
+
+	HAL_ADC_Start(&hadc2);
+
+	HAL_ADC_PollForConversion(&hadc2, 1000);
+
+	adcValue = HAL_ADC_GetValue(&hadc2);
+
+	HAL_ADC_Stop(&hadc2);
+
+
+	return adcValue;
+
+}
+
+
 /* USER CODE END 0 */
 
 /**
