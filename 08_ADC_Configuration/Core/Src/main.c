@@ -44,6 +44,8 @@ ADC_HandleTypeDef hadc1;
 
 /* USER CODE BEGIN PV */
 
+uint32_t analogValue ;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -56,6 +58,23 @@ static void MX_ADC1_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+
+uint32_t Read_ADC_Value(){
+
+	uint32_t adcValue = 0 ;													/*	ADC değerini okumak için oluşturuldu 			*/
+
+	HAL_ADC_Start(&hadc1);													/* ADC'yi başlatmak için	 			 			*/
+
+	HAL_ADC_PollForConversion(&hadc1, 1000);								/* ADC de değer okumak için kanalı açtık 			*/
+
+	adcValue = HAL_ADC_GetValue(&hadc1) ;									/* Gelen değeri değişkene aktardık		 			*/
+
+	HAL_ADC_Stop(&hadc1);													/* Değer geldikten sonra geleni değişkene aktardık	*/
+
+	return adcValue ;
+}
+
 
 /* USER CODE END 0 */
 
@@ -100,6 +119,9 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+	  analogValue = Read_ADC_Value() ;					/* Gelen verileri okuyabilmek için oluşturuldu */
+
   }
   /* USER CODE END 3 */
 }
