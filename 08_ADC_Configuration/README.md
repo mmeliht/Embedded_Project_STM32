@@ -1,0 +1,1 @@
+ADC konfigüre edilerek bağlanan potansiyometrenin değeri ide üzerinden okundu.
