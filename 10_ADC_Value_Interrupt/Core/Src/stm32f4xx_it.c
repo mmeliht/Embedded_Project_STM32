@@ -58,7 +58,7 @@
 extern ADC_HandleTypeDef hadc1;
 /* USER CODE BEGIN EV */
 
-extern uint16_t adc_value ;
+extern uint16_t adc_value ;  // main.c de tanımladığım gloval değişkeni burda kullanabilmek için.
 
 /* USER CODE END EV */
 
@@ -207,7 +207,7 @@ void ADC_IRQHandler(void)
 {
   /* USER CODE BEGIN ADC_IRQn 0 */
 
-	adc_value = HAL_ADC_GetValue(&hadc1);
+	adc_value = HAL_ADC_GetValue(&hadc1); // okunan adc değerini değişkene atama
 
   /* USER CODE END ADC_IRQn 0 */
   HAL_ADC_IRQHandler(&hadc1);
