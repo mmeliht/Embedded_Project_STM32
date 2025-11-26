@@ -57,6 +57,8 @@ static void MX_ADC1_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
+uint16_t adc_value = 0;
+
 /* USER CODE END 0 */
 
 /**
@@ -90,6 +92,8 @@ int main(void)
   MX_GPIO_Init();
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
+
+  HAL_ADC_Start_IT(&hadc1);
 
   /* USER CODE END 2 */
 

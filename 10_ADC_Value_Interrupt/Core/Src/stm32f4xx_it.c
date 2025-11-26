@@ -58,6 +58,8 @@
 extern ADC_HandleTypeDef hadc1;
 /* USER CODE BEGIN EV */
 
+extern uint16_t adc_value ;
+
 /* USER CODE END EV */
 
 /******************************************************************************/
@@ -204,6 +206,8 @@ void SysTick_Handler(void)
 void ADC_IRQHandler(void)
 {
   /* USER CODE BEGIN ADC_IRQn 0 */
+
+	adc_value = HAL_ADC_GetValue(&hadc1);
 
   /* USER CODE END ADC_IRQn 0 */
   HAL_ADC_IRQHandler(&hadc1);
