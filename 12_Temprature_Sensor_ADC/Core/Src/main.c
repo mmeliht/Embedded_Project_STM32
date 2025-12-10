@@ -33,6 +33,7 @@
 /* USER CODE BEGIN PD */
 
 uint32_t analogValue = 0;
+float analog_voltage = 0;
 
 
 /* USER CODE END PD */
@@ -122,49 +123,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 	  analogValue = Read_ADC_Value();
-
-	  /*
-	   * Analog Deger 0 - 255 arası
-	   *
-	   * Tüm Ledler sönük 					0 - 51    	arası
-	   * PD12 aktif							51 - 102  	arası
-	   * PD12 ve PD13 aktif					102 - 153 	arası
-	   * PD12 PD13 ve PD14 aktif			153 - 204 	arası
-	   * PD12 PD13 PD14 ve PD15 aktif		205 - 255 	arası
-	   */
-
-	  if(analogValue >= 0 && analogValue < 51 ){
-		  // Tüm ledler sönük
-		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15 , GPIO_PIN_RESET);
-	  }
-
-	  else if(analogValue >= 51 && analogValue < 102 ){
-	  		  // 1. Led Aktif
-	  		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12 , GPIO_PIN_SET);
-	  		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15 , GPIO_PIN_RESET);
-	  }
-
-	  else if(analogValue >= 102 && analogValue < 153 ){
-	  		  // 1. ve 2. Led Aktif
-	  		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12 | GPIO_PIN_13 , GPIO_PIN_SET);
-	  		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14 | GPIO_PIN_15 , GPIO_PIN_RESET);
-	  }
-
-	  else if(analogValue >= 153 && analogValue < 204 ){
-	  		  // 1. 2. ve 3.  Led Aktif
-	  		  HAL_GPIO_WritePin(GPIOD,  GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 , GPIO_PIN_SET);
-	  		  HAL_GPIO_WritePin(GPIOD,  GPIO_PIN_15 , GPIO_PIN_RESET);
-	  }
-
-	  else if(analogValue >= 204 && analogValue < 255 ){
-	  		  // Tüm ledler aktif
-	  		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15 , GPIO_PIN_SET);
-	  }
-
-	  else {
-		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15 , GPIO_PIN_RESET);
-
-	  }
+	  analog_voltage =  analog_voltage = 3.3 * ((float)analogValue / 255);  /*	adc den okunan değeri tersine çevirdik = analog_voltage = 3.3 * (adc'den okunan değer/ (2^çözünürlük-1)) */
 
   }
   /* USER CODE END 3 */
