@@ -45,6 +45,7 @@ ADC_HandleTypeDef hadc1;
 /* USER CODE BEGIN PV */
 
 uint32_t analogValue ;
+float analog_valtage = 0;
 
 /* USER CODE END PV */
 
@@ -121,6 +122,7 @@ int main(void)
     /* USER CODE BEGIN 3 */
 
 	  analogValue = Read_ADC_Value() ;					/* Gelen verileri okuyabilmek için oluşturuldu */
+	  analog_valtage = 3.3 * ((float)analogValue / 255);  /*	adc den okunan değeri tersine çevirdik = analog_voltage = 3.3 * (adc'den okunan değer/ (2^çözünürlük-1)) */
 
   }
   /* USER CODE END 3 */
@@ -189,7 +191,7 @@ static void MX_ADC1_Init(void)
   */
   hadc1.Instance = ADC1;
   hadc1.Init.ClockPrescaler = ADC_CLOCK_SYNC_PCLK_DIV2;
-  hadc1.Init.Resolution = ADC_RESOLUTION_12B;
+  hadc1.Init.Resolution = ADC_RESOLUTION_8B;
   hadc1.Init.ScanConvMode = DISABLE;
   hadc1.Init.ContinuousConvMode = ENABLE;
   hadc1.Init.DiscontinuousConvMode = DISABLE;
