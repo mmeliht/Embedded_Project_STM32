@@ -160,6 +160,8 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+	  // Program düzgün çalışmıyor.
 	  Read_Real_ADC_Voltage() ;
 
   }
