@@ -44,6 +44,7 @@ float analog_voltage = 0;
 float VDDA_Voltage, Input_Voltage ;
 
 float Vsense ;
+float temprature ;
 
 
 
@@ -103,7 +104,9 @@ void Read_Real_ADC_Voltage(void){
 			HAL_ADC_Stop(&hadc1);
 			VDDA_Voltage = ((float) VREFINT_CAL_VREF / 1000) * ((float) (*VREFINT_CAL_ADDR) / (float) analogDatas[1] );
 			Input_Voltage = VDDA_Voltage * (float) analogDatas[0] / 4095;
+			Vsense = VDDA_Voltage * (float)analogDatas[2] / 4095 ;
 
+			temprature = ((Vsense - V25) / AVG_Slope ) + 25;
 		}
 
 
@@ -157,8 +160,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  analogValue = Read_ADC_Value();
-	  analog_voltage =  analog_voltage = 3.3 * ((float)analogValue / 255);  /*	adc den okunan değeri tersine çevirdik = analog_voltage = 3.3 * (adc'den okunan değer/ (2^çözünürlük-1)) */
+	  Read_Real_ADC_Voltage() ;
 
   }
   /* USER CODE END 3 */
