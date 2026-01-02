@@ -58,7 +58,6 @@ static void MX_TIM2_Init(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 uint16_t counter;
-uint16_t numb = 0;
 
 
 /* USER CODE END 0 */
@@ -97,7 +96,7 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
 
-  HAL_TIM_Base_Init(&htim2);
+  HAL_TIM_Base_Start(&htim2);
 
   /* USER CODE END 2 */
 
@@ -106,10 +105,11 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  counter = __HAL_TIM_GET_COUNTER(&htim2);
-	  numb += 1 ;
 
     /* USER CODE BEGIN 3 */
+	  /* Bu projede timer 2 kullanıldı ve prescaler 46 bin , counter period 2000 yapılarak timer in 2 bine kadar sayması sağlanmıştır. 2 bine kadar sayınca 1 saniye yapmakta.	 */
+
+	  counter = __HAL_TIM_GET_COUNTER(&htim2);
   }
   /* USER CODE END 3 */
 }
