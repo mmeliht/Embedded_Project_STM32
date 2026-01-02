@@ -44,6 +44,7 @@ TIM_HandleTypeDef htim2;
 
 /* USER CODE BEGIN PV */
 
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -56,6 +57,9 @@ static void MX_TIM2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+uint16_t counter;
+uint16_t numb = 0;
+
 
 /* USER CODE END 0 */
 
@@ -67,6 +71,8 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
+
+	/* Timer 2 kullanıldı. Konfigürasyon olarak prescaler : 45999 , Counter period: 1999 */
 
   /* USER CODE END 1 */
 
@@ -91,6 +97,8 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
 
+  HAL_TIM_Base_Init(&htim2);
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -98,6 +106,8 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+	  counter = __HAL_TIM_GET_COUNTER(&htim2);
+	  numb += 1 ;
 
     /* USER CODE BEGIN 3 */
   }
