@@ -107,9 +107,18 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	  /* Bu projede timer 2 kullanıldı ve prescaler 46 bin , counter period 2000 yapılarak timer in 2 bine kadar sayması sağlanmıştır. 2 bine kadar sayınca 1 saniye yapmakta.	 */
+	  /* Bu projede timer 2 kullanıldı ve prescaler 46 bin , counter period 4000 yapılarak timer in 4 bine kadar sayması sağlanmıştır. 4 bine kadar sayınca 1 saniye yapmakta.	 */
 
 	  counter = __HAL_TIM_GET_COUNTER(&htim2);
+
+	  if(counter < 2000){
+		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15 , GPIO_PIN_SET);
+	  }
+	  else
+	  {
+		  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12 | GPIO_PIN_13 | GPIO_PIN_14 | GPIO_PIN_15 , GPIO_PIN_RESET);
+	  }
+
   }
   /* USER CODE END 3 */
 }
