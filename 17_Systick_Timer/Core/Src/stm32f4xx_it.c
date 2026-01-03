@@ -51,6 +51,7 @@
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+int ms,s;
 
 /* USER CODE END 0 */
 
@@ -183,6 +184,13 @@ void PendSV_Handler(void)
 void SysTick_Handler(void)
 {
   /* USER CODE BEGIN SysTick_IRQn 0 */
+
+	ms++;
+
+	if(ms>=1000){
+		ms = 0;
+		s++;
+	}
 
   /* USER CODE END SysTick_IRQn 0 */
   HAL_IncTick();
