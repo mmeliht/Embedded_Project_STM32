@@ -58,6 +58,9 @@
 extern TIM_HandleTypeDef htim7;
 /* USER CODE BEGIN EV */
 
+extern uint16_t milisecond;
+extern uint8_t second,minute;
+
 /* USER CODE END EV */
 
 /******************************************************************************/

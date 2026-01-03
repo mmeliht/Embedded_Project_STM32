@@ -44,6 +44,9 @@ TIM_HandleTypeDef htim7;
 
 /* USER CODE BEGIN PV */
 
+uint16_t milisecond;
+uint8_t second,minute;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -91,8 +94,7 @@ int main(void)
   MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
 
-  HAL_TIM_Base_Start_IT(&htim1); /* Timer 1 i interrupt modunda başlatır.
-  /*core/src/ stm32f4xx_it.c altındaki void TIM1_UP_TIM10_IRQHandler(void) fonksiyonunu çağırır. */
+  HAL_TIM_Base_Start_IT(&htim7);
 
   /* USER CODE END 2 */
 
