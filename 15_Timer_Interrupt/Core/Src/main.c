@@ -89,6 +89,9 @@ int main(void)
   MX_TIM1_Init();
   /* USER CODE BEGIN 2 */
 
+  HAL_TIM_Base_Start_IT(&htim1); /* Timer 1 i interrupt modunda başlatır.
+  /*core/src/ stm32f4xx_it.c altındaki void TIM1_UP_TIM10_IRQHandler(void) fonksiyonunu çağırır. */
+
   /* USER CODE END 2 */
 
   /* Infinite loop */

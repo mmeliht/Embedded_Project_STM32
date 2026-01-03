@@ -201,7 +201,7 @@ void SysTick_Handler(void)
 /**
   * @brief This function handles TIM1 update interrupt and TIM10 global interrupt.
   */
-void TIM1_UP_TIM10_IRQHandler(void)
+void TIM1_UP_TIM10_IRQHandler(void) /* Bir saniyede bir gelip bu fonksiyonu çalıştıracak şekilde ayarlandı. */
 {
   /* USER CODE BEGIN TIM1_UP_TIM10_IRQn 0 */
 
