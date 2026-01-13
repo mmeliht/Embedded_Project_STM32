@@ -45,7 +45,10 @@ DMA_HandleTypeDef hdma_adc1;
 
 /* USER CODE BEGIN PV */
 
-uint32_t adcData[1];
+uint16_t adcData[2];
+uint8_t flag = 0;
+uint16_t channel0;
+uint16_t vref;
 
 /* USER CODE END PV */
 
@@ -60,6 +63,23 @@ static void MX_ADC1_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
+{
+	flag = 1;
+	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
+}
+
+
+void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef *hadc)
+{
+	flag = 2;
+	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
+	HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_RESET);
+
+}
+
 
 /* USER CODE END 0 */
 
@@ -96,7 +116,8 @@ int main(void)
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
 
-  HAL_ADC_Start_DMA( &hadc1, adcData, 1); // sadece bu fonksiyonu kullanarak adc verisini okuyabiliyoruz. İşlemcide yorulmuyor.
+  HAL_ADC_Start_DMA( &hadc1,(uint32_t*) adcData, 2);
+
 
   /* USER CODE END 2 */
 
@@ -105,6 +126,14 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
+
+	  if(flag == 1){
+		  channel0 = (uint16_t) adcData[0];
+		  vref = (uint16_t) adcData[1];
+	  }
+
+
+
 
     /* USER CODE BEGIN 3 */
   }
