@@ -45,6 +45,8 @@ DMA_HandleTypeDef hdma_adc1;
 
 /* USER CODE BEGIN PV */
 
+uint32_t adcData[1];
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -93,6 +95,8 @@ int main(void)
   MX_DMA_Init();
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
+
+  HAL_ADC_Start_DMA( &hadc1, adcData, 1); // sadece bu fonksiyonu kullanarak adc verisini okuyabiliyoruz. İşlemcide yorulmuyor.
 
   /* USER CODE END 2 */
 
